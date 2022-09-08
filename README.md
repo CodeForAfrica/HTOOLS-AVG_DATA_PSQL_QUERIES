@@ -13,7 +13,7 @@
 
 Working with PostgreSQL on a MAC can be problematic espcially when trying to restore backup data. To resolve some of these issue, you could:
 1. Open <b>Terminal</b> and run the command below. 
-    ```zsh
+    ```console
     sudo mkdir -p /etc/paths.d && echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp 
     ```
 2. Download and install PostgreSQL which sets a lot of configurations for you.

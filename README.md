@@ -4,7 +4,7 @@
 2. `JDBC Driver` or <b>postgres client</b> in instances where the scripts are ran locally.
    
 ### Tips
-1. Tools to use: [DBeaver](https://dbeaver.io) ( comments are formated properly when using DBeaver, other editors maybe give errors)
+1. Tools to use: [DBeaver](https://dbeaver.io) ( comments are formated properly when using an editor like DBeaver or Virtual studio, ignor the poor formatting on github)
 2. PostgreSQL clients:
    1. [node-postgres](https://node-postgres.com)
    2. [psycopg](https://www.psycopg.org)

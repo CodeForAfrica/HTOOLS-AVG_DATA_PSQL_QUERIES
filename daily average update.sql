@@ -47,14 +47,14 @@ group by date(d.timestamp), n.id, l.id,																		-- this SECTION groups 
 --------------------------------------------------------------------------------------------------------------------
 
 
-select * from dailavgtable_temp;  --query the temporary table
+select * from dailyavgtable_temp;  --query the temporary table
 
 
 -------------------INSERT RESULTS FROM TEMPORARY TABLE TO sensors_dailyavg[year] TABLE-------------------------------
 
 insert into sensors_dailyavg2022(location, location_id, date, _day, _month, _year, parameter, day_avg)		--pointing to the table we want to append the data to (with its columns in parenthesis)
 select location, location_id, date, _day, _month, _year, parameter, day_avg									-- selecting all data from our temporary storage location
-from dailavgtable_temp;
+from dailyavgtable_temp;
 
 -------------------------------------------------------------------------------------------------------------------
 
@@ -63,4 +63,4 @@ select * from sensors_dailyavg2022;  																		 -- viewing saved data to
 
 ------------------ DELETE TEMPORARY TABLE WHEN DONE ---------------------------------------------------------------
 
-drop table if exists dailavgtable_temp;
+drop table if exists dailyavgtable_temp;

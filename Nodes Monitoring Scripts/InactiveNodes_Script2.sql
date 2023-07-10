@@ -33,7 +33,7 @@ WITH inactive_nodes AS (
                 sd."timestamp" DESC
         ) AS sdata ON ss.id = sdata.sensor_id
         INNER JOIN sensors_node sn ON ss.node_id = sn.id
-        INNER JOIN sensors_sensortype st ON ss.sensor_type_id = sensor_type_id
+        INNER JOIN sensors_sensortype st ON ss.sensor_type_id = st.id
         INNER JOIN sensors_sensorlocation sl ON sl.id = sn.location_id
     GROUP BY
         sn.uid,

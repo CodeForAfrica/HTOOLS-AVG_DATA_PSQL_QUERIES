@@ -4,9 +4,8 @@
 --2. Select first instance of sensor id with DISTINCT ON sensor id
 --3. AGGREGATE sensor ids, timestamp and name associated with a node
 --4  Filter out nodes that have at least one active sensor 
-WITH inactive_nodes AS (
-    SELECT
-        --select all inactive sensors for a given period of time
+WITH inactive_nodes AS ( 
+    SELECT --select all inactive sensors for a given period of time
         DISTINCT ON (sn.uid) sn.uid AS node_id,
         array_agg(sdata.sensor_id) AS sensors,
         array_agg(sdata."timestamp") AS sensors_last_active,
@@ -15,8 +14,7 @@ WITH inactive_nodes AS (
         sl."location",
         sl.city,
         sl.country,
-        sl.latitude,
-        sl.longitude
+        concat(sl.latitude,',',sl.longitude) AS coordinates --group geo co-ordinates
     FROM
         sensors_sensor ss
         INNER JOIN (
@@ -42,20 +40,18 @@ WITH inactive_nodes AS (
         sl.city,
         sl.country,
         sl.latitude,
-        sl.longitude
+        sl.longitude 
 )
 SELECT
     *
 FROM
     inactive_nodes inactv
 WHERE
-    inactv.node_id NOT IN (
-        -- filter inactive node that have at least one active sensor
+    inactv.node_id NOT IN ( -- filter inactive node that have at least one active sensor
         SELECT
             DISTINCT ON (uid) uid
         FROM
-            (
-                -- select node that has at least one active sensor
+            ( -- select node that has at least one active sensor
                 SELECT
                     DISTINCT ON (sd.sensor_id) sd.sensor_id,
                     sn.uid

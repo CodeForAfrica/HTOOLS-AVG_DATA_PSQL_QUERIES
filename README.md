@@ -11,7 +11,7 @@
 
 ### Troubleshooting
 
-Working with PostgreSQL on a MAC can be problematic espcially when trying to restore backup data. To resolve some of these issues, you could:
+Working with PostgreSQL on a MAC can be problematic especially when trying to restore backup data. To resolve some of these issues, you could:
 1. Open <b>Terminal</b> and run the command below. 
     ```sh
     sudo mkdir -p /etc/paths.d && echo /Applications/Postgres.app/Contents/Versions/latest/bin | sudo tee /etc/paths.d/postgresapp 
